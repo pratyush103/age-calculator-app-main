@@ -12,26 +12,181 @@
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    @font-face {
+      font-family: 'Poppins-ExtraBoldItalic';
+      src: url('assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Poppins-Italic';
+      src: url('assets/fonts/Poppins-Italic.ttf') format('truetype');
+    }
+
+    .cal-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5% auto;
+      padding: 5%;
+      background-color: white;
+      border-radius: 15px;
+      border-bottom-right-radius: 150px;
+      max-width: 40rem;
+      overflow: hidden;
+    }
+    
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #864cff;
+      
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      float: right;
+      position: sticky;
+    }
+    .img-container svg {
+      width: 50%;
+    }
+    .divider-container {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      grid-template-columns: 3fr 0fr;
+      
+      
+    }
+    .divider {
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ececec;
+    }
+    .ddmmyy-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 0.75fr 0.5fr;
+      gap: 0px 0px;
+      justify-content: left;
+      align-items: center;
+      width: 85%;
+      
+    }
+    .date{
+      width: 65%;
+      padding: 0.60rem;
+      height: 2rem;
+      border: 1px solid #ececec;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .error-text{
+      color: rgb(255, 0, 0);
+      font-size: 0.75rem;
+      font-family: 'Poppins-Italic';
+      margin: 0;
+      padding: 0;
+    }
+    .ddmmyy{
+      letter-spacing: 2px;
+      font-size: 0.55rem;
+      color: #707070;
+      font-weight: 790;
+    }
+    .result{
+      font-size: 1.85rem;
+      font-family: "Poppins-ExtraBoldItalic" ;
+
+    }
+    .result h1{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0;
+    }
+    .result h1 div p{
+      display: inline;
+      margin: 0;
+      padding: 0;
+
+    }
+    .res{
+      color: #864cff;
+    }
+
+
+    @media screen and (max-width: 600px) {
+      .cal-container{
+        margin: 10% 20px;
+        
+      }
+      
+      .divider-container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+        grid-template-columns: 100%;
+      }
+
+
+
+
+      .img-container{
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
   </style>
 </head>
 <body>
 
-  Day
-  DD
-
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
+  <script src="script.js"></script>
+  <div class="cal-container">
+    <div class="container-grid">
+    <div class="ddmmyy-container">
+      <span class="ddmmyy" id="day">DAY</span>
+      <span class="ddmmyy"id="month">MONTH</span>
+      <span class="ddmmyy"id="year">YEAR</span>
+      <input type="text" class="date" placeholder="DD" id="DD" onblur="calculateAge()">
+      <input type="text" class="date" placeholder="MM" id="MM" onblur="calculateAge()">
+      <input type="text" class="date" placeholder="YYYY" id="YYYY" onblur="calculateAge()" onkeydown="calculateAge()">
+      <div class="error-text" id="error-day"></div>
+      <div class="error-text" id="error-mon"></div>
+      <div class="error-text" id="error-yrs"></div>
+    </div>
+    <div class="divider-container">
+    <hr class="divider">
+    <p class="img-container" onclick="calculateAge()"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg></p>
+    </div>
+    <div class="result">
+      <h1>
+        <div class=""><p class="res" id="resYear">- -</p> <p>years</p> </div>
+        <div class=""><p class="res" id="resMonth">- -</p><p>months</p></div> 
+        <div class=""><p class="res" id="resDay">- -</p><p>days</p></div>  
+      </h1>
+    </div>
+  </div>
+  </div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Pratyush Landekar</a>.
   </div>
 </body>
 </html>
